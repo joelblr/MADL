@@ -1,6 +1,5 @@
 package com.example.mywallpaper;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.WallpaperManager;
@@ -13,6 +12,7 @@ import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity {
+
     Button wallcg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +26,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void changewp() {
+
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
                 R.drawable.img1);
+
         WallpaperManager manager =
                 WallpaperManager.getInstance(getApplicationContext());
+
         try {
             manager.setBitmap(bitmap);
             Toast.makeText(this, "Wallpaper set successfully", Toast.LENGTH_LONG);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e)  { e.printStackTrace(); }
     }
 }

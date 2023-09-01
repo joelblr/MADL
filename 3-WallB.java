@@ -17,52 +17,53 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+
     Button changewallpaper;
     Timer mytimer;
     Drawable drawable;
     WallpaperManager wpm;
-    int id=1;
+    int id = 0;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mytimer = new Timer ();
         wpm = WallpaperManager.getInstance(this);
         changewallpaper = findViewById(R.id.button);
         changewallpaper.setOnClickListener(new View.OnClickListener() {
-@Override public void onClick(View view) {
-            setWallpaper();
-        }
+
+            @Override public void onClick(View view) {
+                setWallpaper();
+            }
         });
     }
+
     private void setWallpaper() {
         mytimer.schedule(new TimerTask() {
+
             @Override
             public void run() {
-                if(id==1) {
-                    drawable = getResources().getDrawable(R.drawable.one);
-                    id = 2;
-                }
-                else if(id==2) {
-                    drawable = getResources().getDrawable(R.drawable.two); id=3;
-                }
-                else if(id==3) {
-                    drawable = getResources().getDrawable(R.drawable.three); id=4;
-                }
-                else if(id==4) {
-                    drawable = getResources().getDrawable(R.drawable.four); id=5;
-                }
-                else if(id==5) {
-                    drawable = getResources().getDrawable(R.drawable.five); id=1;
 
-                }
+                if(id == 0)
+                    drawable = getResources().getDrawable(R.drawable.one);
+                else if(id == 1)
+                    drawable = getResources().getDrawable(R.drawable.two);
+                else if(id == 2)
+                    drawable = getResources().getDrawable(R.drawable.three);
+                else if(id == 3)
+                    drawable = getResources().getDrawable(R.drawable.four);
+                else if(id == 4)
+                    drawable = getResources().getDrawable(R.drawable.five);
+                id = (id+1) % 5
+
                 Bitmap wallpaper = ((BitmapDrawable)drawable).getBitmap();
                 try {
                     wpm.setBitmap(wallpaper);
-                }
-                catch (IOException e)
-                { e.printStackTrace();
-                }
+
+                } catch (IOException e) { e.printStackTrace(); }
             }
-        },0,30000); } }
+
+        },0,30000);
+    }
+}
