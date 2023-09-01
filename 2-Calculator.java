@@ -8,8 +8,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class
-MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     Button b1, b2, bplus, beql;
     EditText ET_Result;
     Float v1, v2;
