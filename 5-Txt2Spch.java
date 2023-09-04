@@ -12,22 +12,23 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-	Button btn;
-	EditText et;
-	TextToSpeech ts;
+    Button btn;
+    EditText et;
+    TextToSpeech ts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn=(Button)findViewById(R.id.btn_ts);
-        et=(EditText)findViewById(R.id.texttospeech);
-        ts =new TextToSpeech(getBaseContext(), new TextToSpeech.OnInitListener() {
+        btn = (Button) findViewById(R.id.btn_ts);
+        et = (EditText) findViewById(R.id.texttospeech);
+        ts = new TextToSpeech(getBaseContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int i) {
-             if(i!=TextToSpeech.ERROR){
-                 ts.setLanguage(Locale.ENGLISH);
-                 Toast.makeText(getBaseContext(), "SUCCESS", Toast.LENGTH_LONG).show();
-             }
+                if (i != TextToSpeech.ERROR) {
+                    ts.setLanguage(Locale.ENGLISH);
+                    Toast.makeText(getBaseContext(), "SUCCESS", Toast.LENGTH_LONG).show();
+                }
             }
         });
         btn.setOnClickListener(new View.OnClickListener() {
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             private void speak() {
-                String text= et.getText().toString();
-                ts.speak(text,TextToSpeech.QUEUE_FLUSH,null);
+                String text = et.getText().toString();
+                ts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
             }
         });
 
