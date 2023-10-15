@@ -15,7 +15,7 @@ public class DataBaseConn extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create Table MDTable(MedicineName Text,date TEXT,time TEXT)");
+        sqLiteDatabase.execSQL("create Table medDB(MedName Text,MedDate TEXT,MedTime TEXT)");
     }
 
     @Override
@@ -25,21 +25,20 @@ public class DataBaseConn extends SQLiteOpenHelper {
     public boolean insertvalues(String medname, String meddate, String medtime) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("MedicineName", medname);
-        contentValues.put("date", meddate);
-        contentValues.put("time", medtime);
+        contentValues.put("MedName", medname);
+        contentValues.put("MedDate", meddate);
+        contentValues.put("MedTime", medtime);
         long res = database.insert("MDTable", null, contentValues);
         if (res == -1)
             return false;
-        else
-            return true;
+        return true;
     }
 
     public Cursor FetchData(String date,String time) {
 
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor c = database
-            .rawQuery("Select * from MDTable where date="+date+" AND time="+time,null);
+            .rawQuery("Select * from medDB where MedDate="+date+" AND MedTime="+time,null);
         return c;
     }
 }
