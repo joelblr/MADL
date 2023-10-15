@@ -34,14 +34,13 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    stop.setOnClickListener(
-        new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-            // tv.setSelected(false);
-            longRunningTask.onPostExecute("AsyncTask Completed");
-          }
-        });
+    stop.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        // tv.setSelected(false);
+        longRunningTask.onPostExecute("");
+      }
+    });
   }
 
   private class LongRunningTask extends AsyncTask<String, String, String> {
@@ -55,10 +54,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onProgressUpdate(String... values) {
       super.onProgressUpdate(values);
       Toast
-          .makeText(
-              getApplicationContext(),
-              "Banner is moving",
-              Toast.LENGTH_LONG)
+          .makeText(getApplicationContext(), "Banner is moving", Toast.LENGTH_LONG)
           .show();
     }
 
@@ -75,7 +71,9 @@ public class MainActivity extends AppCompatActivity {
       super.onPostExecute(s);
       tv.setSelected(false); //
       tv.setVisibility(View.INVISIBLE);
-      Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+      Toast
+          .makeText(getApplicationContext(), "AsyncTask Completed", Toast.LENGTH_LONG)
+          .show();
     }
   }
 }
