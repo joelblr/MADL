@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
     TextView ctr;
     Button start, stop;
     int counter = 0;
