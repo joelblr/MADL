@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Signin extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class Signin extends AppCompatActivity {
     String regemail = getIntent().getStringExtra("email");
     String regpwd = getIntent().getStringExtra("userpwd");
 
-    login.setOnClickListener( new View.OnClickListener() {
+    login.setOnClickListener(new View.OnClickListener() {
 
       @Override
       public void onClick(View view) {
@@ -35,27 +36,26 @@ public class Signin extends AppCompatActivity {
         if (regemail.equals(newemail) && regpwd.equals(newpwd)) {
 
           Toast
-            .makeText(Signin.this, "Login Successful", Toast.LENGTH_LONG)
-            .show();
+              .makeText(Signin.this, "Login Successful", Toast.LENGTH_LONG)
+              .show();
 
-            Intent intent = new Intent(Signin.this, Welcome.class);
+          Intent intent = new Intent(Signin.this, Welcome.class);
           startActivity(intent);
           eusername.setText("");
           epwd.setText("");
 
-        }
-        else {
+        } else {
           count++;
           Toast
-            .makeText(Signin.this, "Login Failed " + count, Toast.LENGTH_LONG)
-            .show();
+              .makeText(Signin.this, "Login Failed " + count, Toast.LENGTH_LONG)
+              .show();
 
           if (count == 3) {
             login.setEnabled(false);
 
             Toast
-              .makeText(Signin.this, "Login Failed" + count, Toast.LENGTH_LONG)
-              .show();
+                .makeText(Signin.this, "Locking", Toast.LENGTH_LONG)
+                .show();
           }
         }
       }
