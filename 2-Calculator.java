@@ -9,21 +9,23 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
     Button b1, b2, bplus, beql;
     EditText ET_Result;
     Float v1, v2;
     Boolean add;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         b1 = (Button)findViewById(R.id.btn_one);
         b2 = (Button) findViewById(R.id.btn_two);
         bplus = (Button) findViewById(R.id.btn_plus);
         beql = (Button) findViewById(R.id.btn_eql);
         ET_Result = (EditText) findViewById(R.id.ET_Result);
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
