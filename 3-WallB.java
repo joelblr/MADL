@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import java.io.IOException;
+// import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -28,12 +28,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mytimer = new Timer ();
-        wpm = WallpaperManager.getInstance(this);
+
         changewallpaper = findViewById(R.id.button);
+
+        mytimer = new Timer();
+        wpm = WallpaperManager.getInstance(this);
+
         changewallpaper.setOnClickListener(new View.OnClickListener() {
 
-            @Override public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
                 setWallpaper();
             }
         });
@@ -55,13 +59,15 @@ public class MainActivity extends AppCompatActivity {
                     drawable = getResources().getDrawable(R.drawable.four);
                 else if(id == 4)
                     drawable = getResources().getDrawable(R.drawable.five);
-                id = (id+1) % 5
+                id = (id+1) % 5;
 
                 Bitmap wallpaper = ((BitmapDrawable)drawable).getBitmap();
                 try {
                     wpm.setBitmap(wallpaper);
 
-                } catch (IOException e) { e.printStackTrace(); }
+                } catch (Exception e) {
+                    // e.printStackTrace();
+                }
             }
 
         },0,30000);
