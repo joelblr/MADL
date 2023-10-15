@@ -12,16 +12,19 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
     Button btn;
     EditText et;
     TextToSpeech ts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btn = (Button) findViewById(R.id.btn_ts);
         et = (EditText) findViewById(R.id.texttospeech);
+
         ts = new TextToSpeech(getBaseContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int i) {
@@ -31,17 +34,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                speak();
-            }
-
-            private void speak() {
                 String text = et.getText().toString();
                 ts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
             }
         });
-
     }
 }
